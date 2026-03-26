@@ -1,0 +1,642 @@
+<style>
+/* ── Reset ── */
+#re-wrap *{margin:0;padding:0;box-sizing:border-box;}
+
+/* ── Container ── */
+#re-wrap{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  font-size:15px;line-height:1.5;color:#1e293b;
+  background:#f1f5f9;padding:20px;
+  max-width:820px;margin:0 auto;
+}
+
+/* ── Header da lição ── */
+#re-wrap .re-lesson-header{margin-bottom:20px;}
+#re-wrap .re-lesson-meta{font-size:0.75rem;color:#64748b;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;}
+#re-wrap .re-lesson-title{font-size:1.6rem;font-weight:700;color:#1e293b;line-height:1.25;margin-bottom:6px;}
+#re-wrap .re-lesson-title .hl{color:#2563eb;}
+#re-wrap .re-lesson-desc{color:#64748b;font-size:0.92rem;}
+
+/* ── Blocos ── */
+#re-wrap .re-block{
+  background:#fff;border:1px solid #d8e0e9;border-radius:14px;
+  padding:20px;margin-bottom:16px;
+}
+#re-wrap .re-block-title{
+  font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;
+  color:#2563eb;margin-bottom:14px;
+}
+
+/* ── Hook ── */
+#re-wrap .re-hook{background:linear-gradient(135deg,#fefce8,#fff7ed);border-color:#fcd34d;}
+#re-wrap .re-hook-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px;}
+@media(max-width:540px){#re-wrap .re-hook-grid{grid-template-columns:1fr;}}
+#re-wrap .re-hook-wrong{background:#fee2e2;border:1px solid #fca5a5;border-radius:10px;padding:14px;}
+#re-wrap .re-hook-right{background:#dcfce7;border:1px solid #86efac;border-radius:10px;padding:14px;}
+#re-wrap .re-hook-label{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:6px;}
+#re-wrap .re-hook-wrong .re-hook-label{color:#dc2626;}
+#re-wrap .re-hook-right .re-hook-label{color:#16a34a;}
+#re-wrap .re-hook-phrase{font-weight:600;font-size:0.97rem;margin-bottom:4px;color:#1e293b;}
+#re-wrap .re-hook-note{font-size:0.8rem;color:#64748b;line-height:1.4;}
+
+/* ── Explanation ── */
+#re-wrap .re-explanation{color:#1e293b;font-size:0.95rem;line-height:1.7;}
+#re-wrap .re-explanation strong{color:#2563eb;font-weight:600;}
+#re-wrap .re-explanation em{color:#16a34a;font-style:normal;font-weight:600;}
+#re-wrap .re-tip{
+  background:#eff6ff;border-left:3px solid #2563eb;border-radius:8px;
+  padding:12px 14px;margin:12px 0;font-size:0.88rem;color:#1e3a8a;line-height:1.5;
+}
+
+/* ── Reading ── */
+#re-wrap .re-reading-audio-btn{
+  background:#2563eb;color:#fff;border:none;border-radius:20px;
+  padding:8px 18px;font-size:0.85rem;font-weight:600;cursor:pointer;
+  margin-bottom:12px;display:inline-flex;align-items:center;gap:6px;
+}
+#re-wrap .re-reading-audio-btn:hover{background:#1d4ed8;}
+#re-wrap .re-reading-text{
+  background:#f4f7fa;border:1px solid #d8e0e9;border-radius:10px;
+  padding:16px;font-size:0.97rem;line-height:1.9;color:#1e293b;margin-top:10px;
+}
+#re-wrap .gr-verb{color:#7c3aed;font-weight:600;}
+#re-wrap .gr-noun{color:#0369a1;font-weight:600;}
+#re-wrap .gr-adj{color:#b45309;font-weight:600;}
+#re-wrap .gr-prep{color:#059669;font-weight:600;}
+#re-wrap .gr-conn{color:#be185d;font-weight:600;}
+#re-wrap .re-grammar-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;font-size:0.78rem;}
+#re-wrap .re-legend-item{display:flex;align-items:center;gap:5px;}
+#re-wrap .re-legend-dot{width:10px;height:10px;border-radius:50%;}
+
+/* ── Dialogue ── */
+#re-wrap .re-dialogue{display:flex;flex-direction:column;gap:10px;margin-top:8px;}
+#re-wrap .re-line{display:flex;align-items:flex-start;gap:10px;}
+#re-wrap .re-line.right{flex-direction:row-reverse;}
+#re-wrap .re-avatar{
+  width:34px;height:34px;border-radius:50%;background:#f4f7fa;
+  border:1px solid #d8e0e9;display:flex;align-items:center;justify-content:center;
+  font-size:1rem;flex-shrink:0;
+}
+#re-wrap .re-bubble-wrap{max-width:78%;}
+#re-wrap .re-speaker{font-size:0.72rem;color:#64748b;margin-bottom:3px;font-weight:600;}
+#re-wrap .re-line.right .re-speaker{text-align:right;}
+#re-wrap .re-bubble{background:#f4f7fa;border:1px solid #d8e0e9;border-radius:12px;padding:10px 14px;}
+#re-wrap .re-line.right .re-bubble{background:#eff6ff;border-color:#bfdbfe;}
+#re-wrap .re-bubble-en{font-weight:500;color:#1e293b;font-size:0.95rem;margin-bottom:3px;}
+#re-wrap .re-bubble-pt{font-size:0.8rem;color:#64748b;font-style:italic;}
+#re-wrap .re-bubble-play{
+  background:none;border:none;color:#2563eb;cursor:pointer;
+  font-size:0.75rem;padding:4px 0 0;display:inline-flex;align-items:center;gap:3px;
+}
+#re-wrap .re-bubble-play:hover{color:#1d4ed8;}
+
+/* ── Vocabulary ── */
+#re-wrap .re-vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;margin-top:8px;}
+#re-wrap .re-vocab-card{
+  background:#f4f7fa;border:1px solid #d8e0e9;border-radius:12px;padding:14px;
+  transition:border-color 0.18s,transform 0.18s;
+}
+#re-wrap .re-vocab-card:hover{border-color:#2563eb;transform:translateY(-2px);}
+#re-wrap .re-vocab-word{font-weight:700;font-size:1.05rem;color:#2563eb;margin-bottom:3px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:4px;}
+#re-wrap .re-flag{font-size:0.68rem;padding:2px 7px;border-radius:8px;font-weight:700;white-space:nowrap;}
+#re-wrap .re-flag.us{background:#dbeafe;color:#1d4ed8;}
+#re-wrap .re-flag.uk{background:#fee2e2;color:#b91c1c;}
+#re-wrap .re-flag.both{background:#f3f4f6;color:#374151;}
+#re-wrap .re-vocab-meaning{font-size:0.83rem;color:#64748b;margin:5px 0;}
+#re-wrap .re-vocab-example{font-size:0.8rem;color:#16a34a;border-top:1px solid #d8e0e9;padding-top:7px;margin-top:7px;font-style:italic;line-height:1.4;}
+#re-wrap .re-vocab-play{background:none;border:none;color:#64748b;cursor:pointer;font-size:0.75rem;display:flex;align-items:center;gap:3px;margin-top:6px;}
+#re-wrap .re-vocab-play:hover{color:#2563eb;}
+
+/* ── Audio list ── */
+#re-wrap .re-audio-list{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+#re-wrap .re-audio-item{
+  display:flex;align-items:center;gap:12px;background:#f4f7fa;
+  border:1px solid #d8e0e9;border-radius:10px;padding:11px 14px;cursor:pointer;transition:border-color 0.18s,background 0.18s;
+}
+#re-wrap .re-audio-item:hover{border-color:#2563eb;background:#eff6ff;}
+#re-wrap .re-audio-btn{
+  width:34px;height:34px;border-radius:50%;background:#2563eb;color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:0.8rem;
+  flex-shrink:0;border:none;cursor:pointer;
+}
+#re-wrap .re-audio-item:hover .re-audio-btn{background:#1d4ed8;}
+#re-wrap .re-audio-en{font-weight:600;font-size:0.95rem;color:#1e293b;}
+#re-wrap .re-audio-pt{font-size:0.8rem;color:#64748b;margin-top:1px;}
+#re-wrap .re-audio-file{font-size:0.68rem;color:#94a3b8;margin-top:2px;font-family:monospace;}
+
+/* ── Gap fill ── */
+#re-wrap .re-gap-list{display:flex;flex-direction:column;gap:14px;margin-top:10px;}
+#re-wrap .re-gap-item{background:#f4f7fa;border:1px solid #d8e0e9;border-radius:10px;padding:14px;}
+#re-wrap .re-gap-sentence{font-size:1rem;font-weight:500;color:#1e293b;line-height:2;display:flex;align-items:center;flex-wrap:wrap;gap:4px;}
+#re-wrap .re-gap-select{
+  border:2px solid #d8e0e9;border-radius:8px;padding:4px 10px;
+  font-size:0.9rem;font-weight:600;background:#fff;color:#1e293b;
+  cursor:pointer;outline:none;transition:border-color 0.18s;
+}
+#re-wrap .re-gap-select:focus{border-color:#2563eb;}
+#re-wrap .re-gap-feedback{margin-top:8px;font-size:0.85rem;font-weight:600;padding:6px 10px;border-radius:8px;}
+#re-wrap .re-gap-ok{background:#dcfce7;color:#16a34a;}
+#re-wrap .re-gap-fail{background:#fee2e2;color:#dc2626;}
+
+/* ── Oral drill ── */
+#re-wrap .re-drill-instruction{font-size:0.9rem;color:#64748b;margin-bottom:14px;line-height:1.5;}
+#re-wrap .re-drill-model{background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:16px;margin-bottom:16px;}
+#re-wrap .re-drill-model-label{font-size:0.73rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#2563eb;margin-bottom:8px;}
+#re-wrap .re-drill-en{font-weight:700;font-size:1.05rem;color:#1e293b;margin-bottom:4px;}
+#re-wrap .re-drill-pt{font-size:0.85rem;color:#64748b;font-style:italic;margin-bottom:10px;}
+#re-wrap .re-drill-play,
+#re-wrap .re-drill-play-ans{
+  background:#2563eb;color:#fff;border:none;border-radius:20px;
+  padding:7px 16px;font-size:0.82rem;font-weight:600;cursor:pointer;
+}
+#re-wrap .re-drill-play:hover,
+#re-wrap .re-drill-play-ans:hover{background:#1d4ed8;}
+#re-wrap .re-drill-prompts{display:flex;flex-direction:column;gap:10px;}
+#re-wrap .re-drill-prompt{background:#f4f7fa;border:1px solid #d8e0e9;border-radius:10px;padding:14px;}
+#re-wrap .re-drill-cue{font-weight:600;font-size:0.95rem;color:#1e293b;margin-bottom:10px;}
+#re-wrap .re-drill-try{
+  background:#2563eb;color:#fff;border:none;border-radius:20px;
+  padding:9px 20px;font-size:0.88rem;font-weight:600;cursor:pointer;
+}
+#re-wrap .re-drill-try:hover{background:#1d4ed8;}
+#re-wrap .re-drill-answer{background:#dcfce7;border:1px solid #86efac;border-radius:10px;padding:12px;margin-top:8px;}
+#re-wrap .re-drill-answer-label{font-size:0.73rem;font-weight:700;text-transform:uppercase;color:#16a34a;margin-bottom:6px;letter-spacing:0.8px;}
+#re-wrap .re-drill-answer-text{font-weight:700;font-size:1rem;color:#14532d;margin-bottom:8px;}
+
+/* ── Exercise ── */
+#re-wrap .re-exercise-q{font-weight:700;font-size:1rem;color:#1e293b;margin-bottom:14px;line-height:1.4;}
+#re-wrap .re-options{display:flex;flex-direction:column;gap:8px;}
+#re-wrap .re-option{
+  background:#fff;border:2px solid #d8e0e9;border-radius:10px;
+  padding:12px 16px;text-align:left;color:#1e293b;font-size:0.93rem;
+  cursor:pointer;font-weight:500;font-family:inherit;transition:all 0.18s;
+}
+#re-wrap .re-option:hover:not(:disabled){border-color:#2563eb;background:#eff6ff;color:#2563eb;}
+#re-wrap .re-option.correct{background:#dcfce7;border-color:#16a34a;color:#16a34a;pointer-events:none;}
+#re-wrap .re-option.wrong{background:#fee2e2;border-color:#dc2626;color:#dc2626;pointer-events:none;}
+#re-wrap .re-option:disabled{pointer-events:none;opacity:0.55;}
+#re-wrap .re-feedback{margin-top:12px;padding:12px 14px;border-radius:10px;font-size:0.88rem;line-height:1.5;}
+#re-wrap .re-feedback.ok{background:#dcfce7;border:1px solid #86efac;color:#14532d;}
+#re-wrap .re-feedback.fail{background:#fee2e2;border:1px solid #fca5a5;color:#7f1d1d;}
+
+/* ── Notification ── */
+#re-wrap .re-notif{
+  position:fixed;top:20px;right:20px;padding:11px 18px;border-radius:24px;
+  font-weight:600;font-size:0.85rem;z-index:9999;
+  box-shadow:0 4px 16px rgba(0,0,0,0.15);
+}
+#re-wrap .re-notif.success{background:#16a34a;color:#fff;}
+#re-wrap .re-notif.warning{background:#f59e0b;color:#fff;}
+#re-wrap .re-notif.error{background:#dc2626;color:#fff;}
+
+/* ── Progress bar ── */
+#re-wrap .re-module-progress{
+  background:#fff;border-radius:14px;padding:16px 20px;
+  margin-bottom:20px;border:1px solid #d8e0e9;
+}
+#re-wrap .re-progress-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:0.85rem;color:#64748b;}
+#re-wrap .re-progress-label strong{color:#1e293b;}
+#re-wrap .re-progress-bar{height:10px;background:#d8e0e9;border-radius:8px;overflow:hidden;}
+#re-wrap .re-progress-fill{height:100%;background:#16a34a;border-radius:8px;transition:width 0.5s;}
+
+/* ── Completed ── */
+#re-wrap .re-completed{
+  text-align:center;padding:40px 20px;background:#fff;
+  border:1px solid #d8e0e9;border-radius:14px;margin-bottom:16px;
+}
+#re-wrap .re-completed h3{font-size:1.3rem;font-weight:700;color:#16a34a;margin:12px 0 6px;}
+#re-wrap .re-completed p{color:#64748b;}
+
+/* ── Actions ── */
+#re-wrap .re-actions{display:flex;gap:12px;justify-content:center;margin-top:24px;flex-wrap:wrap;}
+#re-wrap .re-btn{padding:11px 26px;border-radius:28px;font-weight:700;font-size:0.9rem;cursor:pointer;border:none;font-family:inherit;}
+#re-wrap .re-btn-primary{background:#2563eb;color:#fff;}
+#re-wrap .re-btn-primary:hover{background:#1d4ed8;}
+#re-wrap .re-btn-secondary{background:#fff;color:#64748b;border:2px solid #d8e0e9;}
+#re-wrap .re-btn-secondary:hover{border-color:#2563eb;color:#2563eb;}
+
+@media(max-width:580px){
+  #re-wrap .re-lesson-title{font-size:1.3rem;}
+  #re-wrap .re-block{padding:16px 14px;}
+  #re-wrap .re-vocab-grid{grid-template-columns:1fr;}
+  #re-wrap .re-bubble-wrap{max-width:86%;}
+}
+</style>
+
+<div id="re-wrap">
+  <div id="re-lesson-root"></div>
+</div>
+
+<script>
+(function(){
+
+/* ── Lesson data ── */
+var lesson = {
+  id:"i1", icon:"🔄",
+  title:"Phrasal verbs que você vai usar hoje",
+  highlight:"vai usar hoje",
+  description:"Os 10 phrasal verbs mais usados na conversa real — com contexto, não decoreba.",
+  content:[
+    {
+      type:"hook",
+      wrong:{ phrase:"I want to discontinue our relationship.", note:"Correto, mas ninguém fala assim. Muito formal e clínico para uma situação pessoal." },
+      right:{ phrase:"I think we should break up. / I'm gonna call it off.", note:"É assim que se fala no dia a dia. Phrasal verbs são o coração do inglês falado." }
+    },
+    {
+      type:"explanation", title:"📖 Por que phrasal verbs são essenciais",
+      text:'<p>Phrasal verbs são combinações de <strong>verbo + preposição/advérbio</strong> que criam um novo significado. Eles dominam o inglês falado e informal.</p><p>A boa notícia: você não precisa decorar centenas. Os <em>10-15 mais comuns</em> cobrem a maioria das conversas do dia a dia.</p><p>A lógica por trás deles:</p><p>• <strong>"up"</strong> geralmente indica completar ou intensificar: give up, wrap up, clean up</p><p>• <strong>"out"</strong> geralmente indica para fora ou finalização: find out, work out, run out</p><p>• <strong>"on"</strong> geralmente indica continuação: keep on, move on, carry on</p><div class="re-tip">💡 Aprenda phrasal verbs em frases completas e em contexto — nunca como palavras isoladas. Seu cérebro vai absorver o significado naturalmente.</div>'
+    },
+    {
+      type:"reading", title:"📄 Phrasal verbs em contexto — leia as cores",
+      intro:"Observe como os phrasal verbs funcionam dentro de frases reais. As cores mostram a função de cada palavra.",
+      audioText:"Megan figured out that her flight was delayed. She looked up the nearest hotel on her phone and called her friend Dan for a pick-up. Don't give up, Dan said. It'll all work out. And he was right — the next morning, everything worked out perfectly.",
+      text:'<p><span class="gr-noun">Megan</span> <span class="gr-verb">figured out</span> that her <span class="gr-noun">flight</span> was <span class="gr-adj">delayed</span>. She <span class="gr-verb">looked up</span> the <span class="gr-adj">nearest</span> <span class="gr-noun">hotel</span> <span class="gr-prep">on</span> her <span class="gr-noun">phone</span> <span class="gr-conn">and</span> <span class="gr-verb">called</span> her <span class="gr-noun">friend</span> Dan <span class="gr-prep">for</span> a <span class="gr-noun">pick-up</span>.</p><p style="margin-top:10px;">"<span class="gr-conn">Don\'t</span> <span class="gr-verb">give up</span>," Dan <span class="gr-verb">said</span>. "It\'ll all <span class="gr-verb">work out</span>." <span class="gr-conn">And</span> he was <span class="gr-adj">right</span> — the <span class="gr-adj">next</span> <span class="gr-noun">morning</span>, everything <span class="gr-verb">worked out</span> <span class="gr-adj">perfectly</span>.</p>'
+    },
+    {
+      type:"dialogue", title:"🗣️ Conversa cheia de phrasal verbs",
+      lines:[
+        { speaker:"Megan 🇺🇸", side:"left",  en:"Hey, did you find out what time the event starts?",  pt:"Ei, você descobriu que horas começa o evento?" },
+        { speaker:"Dan",       side:"right", en:"Not yet. I'll look it up in a sec.",                 pt:"Ainda não. Vou pesquisar isso em um segundo." },
+        { speaker:"Megan 🇺🇸", side:"left",  en:"Can you pick me up on the way? My car broke down.",  pt:"Você pode me pegar no caminho? Meu carro quebrou." },
+        { speaker:"Dan",       side:"right", en:"Sure! Just text me when you're ready to go.",        pt:"Claro! Me manda mensagem quando estiver pronto." },
+        { speaker:"Megan 🇺🇸", side:"left",  en:"You're the best. I owe you one!",                   pt:"Você é o melhor. Te devo uma!" }
+      ]
+    },
+    {
+      type:"vocabulary", title:"🔑 Os 10 phrasal verbs essenciais",
+      words:[
+        { word:"Figure out",  flag:"both", meaning:"Descobrir / Entender / Resolver",   example:'"I can\'t figure out how this works."' },
+        { word:"Find out",    flag:"both", meaning:"Descobrir (uma informação)",         example:'"Did you find out what happened?"' },
+        { word:"Look up",     flag:"both", meaning:"Pesquisar / Buscar informação",      example:'"Let me look it up on Google."' },
+        { word:"Pick up",     flag:"both", meaning:"Buscar / Pegar (pessoa ou coisa)",   example:'"Can you pick me up at 7?"' },
+        { word:"Break down",  flag:"both", meaning:"Quebrar (máquina) / Colapso emocional", example:'"My car broke down on the highway."' },
+        { word:"Give up",     flag:"both", meaning:"Desistir",                           example:'"Don\'t give up, you\'re so close!"' },
+        { word:"Work out",    flag:"both", meaning:"Malhar / Dar certo / Resolver",      example:'"It all worked out in the end."' },
+        { word:"Run out of",  flag:"both", meaning:"Ficar sem / Acabar",                 example:'"We ran out of coffee. I need to buy more."' },
+        { word:"Turn up",     flag:"uk",   meaning:"Aparecer / Chegar (UK)",             example:'"He turned up two hours late."' },
+        { word:"Hang out",    flag:"both", meaning:"Ficar junto / Passar tempo juntos",  example:'"Wanna hang out this weekend?"' }
+      ]
+    },
+    {
+      type:"audio", title:"🎧 Ouça as frases completas",
+      items:[
+        { en:"I can't figure out what she means.",       pt:"Não consigo entender o que ela quer dizer.",  accent:"us" },
+        { en:"Let me look it up real quick.",            pt:"Deixa eu pesquisar isso rapidinho.",           accent:"us" },
+        { en:"We completely ran out of time.",           pt:"Ficamos completamente sem tempo.",             accent:"us" },
+        { en:"Don't give up now — you're almost there!", pt:"Não desista agora — você tá quase lá!",       accent:"us" },
+        { en:"Can you pick me up at seven?",             pt:"Você pode me buscar às sete?",                accent:"us" },
+        { en:"He turned up two hours late, as usual.",   pt:"Ele apareceu duas horas atrasado, como sempre.", accent:"uk" }
+      ]
+    },
+    {
+      type:"gap", title:"✏️ Complete com o phrasal verb correto",
+      sentences:[
+        {
+          before:"I can't ",
+          after:" why she's upset. Did something happen?",
+          options:["figure out","give up","run out","turn up"],
+          correct:0
+        },
+        {
+          before:"My phone battery ",
+          after:" right when I needed it most.",
+          options:["ran out","figured out","worked out","broke up"],
+          correct:0
+        },
+        {
+          before:"Don't ",
+          after:"! You're almost at the finish line.",
+          options:["give up","look up","pick up","hang out"],
+          correct:0
+        },
+        {
+          before:"Can you ",
+          after:" the nearest pharmacy on your phone?",
+          options:["look up","find out","work out","run out of"],
+          correct:0
+        }
+      ]
+    },
+    {
+      type:"oral_drill", title:"🎤 Oral Drill — Phrasal verbs em ação",
+      instruction:"Olhe o prompt, pense na resposta e fale em voz alta. Depois clique para ver a resposta esperada.",
+      model:{
+        en:"My car broke down, so I had to look up the nearest garage and ask a friend to pick me up.",
+        pt:"Meu carro quebrou, então tive que pesquisar a oficina mais próxima e pedir a um amigo para me buscar."
+      },
+      prompts:[
+        { cue:"Prompt: você não consegue entender o problema.", answer:"I can't figure out what the problem is." },
+        { cue:"Prompt: você ficou sem gasolina na estrada.", answer:"I ran out of gas on the highway." },
+        { cue:"Prompt: o amigo apareceu atrasado mas tudo deu certo no final.", answer:"He turned up late, but it all worked out in the end." },
+        { cue:"Prompt: motive alguém que quer desistir.", answer:"Don't give up! You can do it — keep going!" }
+      ]
+    },
+    {
+      type:"exercise",
+      question:'"My phone battery _____ out right when I needed it most." Complete corretamente:',
+      options:["ran","gave","went","came"],
+      correct:0,
+      explanation:'"Run out" = ficar sem / acabar. "My phone battery ran out" = a bateria do meu celular acabou. "Ran" é o passado de "run".'
+    },
+    {
+      type:"exercise",
+      question:'"Can you figure out what\'s wrong with this code?" O que isso significa?',
+      options:["Você pode consertar o código?","Você pode descobrir o que está errado no código?","Você pode escrever esse código?","Você pode deletar esse código?"],
+      correct:1,
+      explanation:'"Figure out" = descobrir, entender, resolver. A pergunta é se a pessoa consegue entender/descobrir qual é o problema — não necessariamente consertá-lo.'
+    }
+  ]
+};
+
+/* ── State ── */
+var points = 0;
+var completedEx = new Set();
+var isDone = false;
+
+/* ── Helpers ── */
+function speak(text, accent){
+  var u = new SpeechSynthesisUtterance(text);
+  u.lang = accent === 'uk' ? 'en-GB' : 'en-US';
+  u.rate = 0.85;
+  window.speechSynthesis.cancel();
+  window.speechSynthesis.speak(u);
+}
+
+function notify(msg, type){
+  var d = document.createElement('div');
+  d.className = 're-notif ' + (type||'success');
+  d.textContent = msg;
+  document.getElementById('re-wrap').appendChild(d);
+  setTimeout(function(){ d.remove(); }, 2500);
+}
+
+/* ── Render ── */
+function render(){
+  completedEx.clear();
+  var root = document.getElementById('re-lesson-root');
+  root.innerHTML = '';
+
+  /* Progress bar */
+  var exercises = lesson.content.filter(function(c){ return c.type === 'exercise'; });
+  var total = exercises.length;
+  var done = isDone ? total : 0;
+  var pct = total ? Math.round((done/total)*100) : 0;
+  var prog = document.createElement('div');
+  prog.className = 're-module-progress';
+  prog.innerHTML = '<div class="re-progress-label"><strong>Intermediário — Lição 1</strong><span>' + done + ' de ' + total + ' exercícios</span></div>'
+    + '<div class="re-progress-bar"><div class="re-progress-fill" id="re-prog-fill" style="width:' + pct + '%"></div></div>';
+  root.appendChild(prog);
+
+  /* Lesson header */
+  var hdr = document.createElement('div');
+  hdr.className = 're-lesson-header';
+  var safeTitle = lesson.title.replace(lesson.highlight, '<span class="hl">' + lesson.highlight + '</span>');
+  hdr.innerHTML = '<div class="re-lesson-meta">' + lesson.icon + ' Lição 1 — Intermediário</div>'
+    + '<h2 class="re-lesson-title">' + safeTitle + '</h2>'
+    + '<p class="re-lesson-desc">' + lesson.description + '</p>';
+  root.appendChild(hdr);
+
+  if(isDone){
+    var done_div = document.createElement('div');
+    done_div.className = 're-completed';
+    done_div.innerHTML = '<div style="font-size:2.5rem">🏆</div><h3>Lição Concluída!</h3><p>Revise o conteúdo abaixo a qualquer momento.</p>';
+    root.appendChild(done_div);
+  }
+
+  lesson.content.forEach(function(item){
+    if(isDone && item.type === 'exercise') return;
+    var block = renderBlock(item);
+    if(block) root.appendChild(block);
+  });
+}
+
+function renderBlock(item){
+  var block = document.createElement('div');
+  block.className = 're-block';
+
+  /* HOOK */
+  if(item.type === 'hook'){
+    block.classList.add('re-hook');
+    block.innerHTML = '<div class="re-block-title">⚡ Você sabia?</div>'
+      + '<div class="re-hook-grid">'
+      + '<div class="re-hook-wrong"><div class="re-hook-label">❌ Do jeito do livro</div>'
+      + '<div class="re-hook-phrase">' + item.wrong.phrase + '</div>'
+      + '<div class="re-hook-note">' + item.wrong.note + '</div></div>'
+      + '<div class="re-hook-right"><div class="re-hook-label">✅ Do jeito real</div>'
+      + '<div class="re-hook-phrase">' + item.right.phrase + '</div>'
+      + '<div class="re-hook-note">' + item.right.note + '</div></div>'
+      + '</div>';
+  }
+
+  /* EXPLANATION */
+  else if(item.type === 'explanation'){
+    block.innerHTML = '<div class="re-block-title">' + item.title + '</div>'
+      + '<div class="re-explanation">' + item.text + '</div>';
+  }
+
+  /* READING */
+  else if(item.type === 'reading'){
+    var audioBtn = item.audioText
+      ? '<button class="re-reading-audio-btn" onclick="reSpeak(\'' + item.audioText.replace(/'/g,"\\'") + '\',\'us\')">🔊 Ouvir o texto completo</button>'
+      : '';
+    block.innerHTML = '<div class="re-block-title">' + item.title + '</div>'
+      + '<p style="font-size:0.85rem;color:#64748b;margin-bottom:8px;">' + (item.intro||'') + '</p>'
+      + audioBtn
+      + '<div class="re-reading-text">' + item.text + '</div>'
+      + '<div class="re-grammar-legend">'
+      + '<div class="re-legend-item"><div class="re-legend-dot" style="background:#7c3aed"></div><span style="color:#7c3aed;font-weight:600">Verbos</span></div>'
+      + '<div class="re-legend-item"><div class="re-legend-dot" style="background:#0369a1"></div><span style="color:#0369a1;font-weight:600">Substantivos</span></div>'
+      + '<div class="re-legend-item"><div class="re-legend-dot" style="background:#b45309"></div><span style="color:#b45309;font-weight:600">Adjetivos</span></div>'
+      + '<div class="re-legend-item"><div class="re-legend-dot" style="background:#059669"></div><span style="color:#059669;font-weight:600">Preposições</span></div>'
+      + '<div class="re-legend-item"><div class="re-legend-dot" style="background:#be185d"></div><span style="color:#be185d;font-weight:600">Conectores</span></div>'
+      + '</div>';
+  }
+
+  /* DIALOGUE */
+  else if(item.type === 'dialogue'){
+    block.innerHTML = '<div class="re-block-title">' + item.title + '</div><div class="re-dialogue"></div>';
+    var dl = block.querySelector('.re-dialogue');
+    item.lines.forEach(function(line){
+      var el = document.createElement('div');
+      el.className = 're-line ' + line.side;
+      var cleanEn = line.en.replace(/'/g,"\\'");
+      el.innerHTML = '<div class="re-avatar">' + (line.side==='left'?'👤':'🙋') + '</div>'
+        + '<div class="re-bubble-wrap">'
+        + '<div class="re-speaker">' + line.speaker + '</div>'
+        + '<div class="re-bubble">'
+        + '<div class="re-bubble-en">' + line.en + '</div>'
+        + '<div class="re-bubble-pt">' + line.pt + '</div>'
+        + '<button class="re-bubble-play" onclick="reSpeak(\'' + cleanEn + '\',\'us\')">🔊 ouvir</button>'
+        + '</div></div>';
+      dl.appendChild(el);
+    });
+  }
+
+  /* VOCABULARY */
+  else if(item.type === 'vocabulary'){
+    block.innerHTML = '<div class="re-block-title">' + item.title + '</div><div class="re-vocab-grid"></div>';
+    var grid = block.querySelector('.re-vocab-grid');
+    var flagLabel = {us:'🇺🇸 AmE', uk:'🇬🇧 BrE', both:'🌍 Ambos'};
+    item.words.forEach(function(w){
+      var cleanWord = w.word.replace(/'/g,"\\'");
+      var acc = w.flag==='uk'?'uk':'us';
+      var card = document.createElement('div');
+      card.className = 're-vocab-card';
+      card.innerHTML = '<div class="re-vocab-word">' + w.word
+        + '<span class="re-flag ' + w.flag + '">' + (flagLabel[w.flag]||w.flag) + '</span></div>'
+        + '<div class="re-vocab-meaning">📖 ' + w.meaning + '</div>'
+        + '<div class="re-vocab-example">💬 ' + w.example + '</div>'
+        + '<button class="re-vocab-play" onclick="reSpeak(\'' + cleanWord + '\',\'' + acc + '\')">🔊 ouvir</button>';
+      grid.appendChild(card);
+    });
+  }
+
+  /* AUDIO */
+  else if(item.type === 'audio'){
+    block.innerHTML = '<div class="re-block-title">' + item.title + '</div><div class="re-audio-list"></div>';
+    var list = block.querySelector('.re-audio-list');
+    item.items.forEach(function(a, ai){
+      var fname = 'i01-' + (ai<9?'0':'') + (ai+1) + '.mp3';
+      var el = document.createElement('div');
+      el.className = 're-audio-item';
+      el.setAttribute('data-audio-file', fname);
+      el.innerHTML = '<button class="re-audio-btn">▶</button>'
+        + '<div><div class="re-audio-en">' + a.en + '</div>'
+        + '<div class="re-audio-pt">' + a.pt + '</div>'
+        + '<div class="re-audio-file">📁 ' + fname + '</div></div>';
+      el.onclick = function(){ reSpeak(a.en, a.accent); };
+      list.appendChild(el);
+    });
+  }
+
+  /* GAP */
+  else if(item.type === 'gap'){
+    block.innerHTML = '<div class="re-block-title">' + item.title + '</div><div class="re-gap-list"></div>';
+    var glist = block.querySelector('.re-gap-list');
+    item.sentences.forEach(function(s, si){
+      var wrap = document.createElement('div');
+      wrap.className = 're-gap-item';
+      var optsHtml = '<option value="" disabled selected>▼ escolha</option>';
+      s.options.forEach(function(o, oi){ optsHtml += '<option value="' + oi + '">' + o + '</option>'; });
+      wrap.innerHTML = '<div class="re-gap-sentence">'
+        + '<span>' + s.before + '</span>'
+        + '<select class="re-gap-select" data-correct="' + s.correct + '">' + optsHtml + '</select>'
+        + '<span>' + s.after + '</span>'
+        + '</div>'
+        + '<div class="re-gap-feedback" style="display:none"></div>';
+      var sel = wrap.querySelector('.re-gap-select');
+      sel.addEventListener('change', function(){
+        var fb = wrap.querySelector('.re-gap-feedback');
+        var correct = parseInt(this.getAttribute('data-correct'));
+        var chosen = parseInt(this.value);
+        fb.style.display = 'block';
+        if(chosen === correct){
+          this.style.borderColor='#16a34a'; this.style.background='#dcfce7';
+          fb.className='re-gap-feedback re-gap-ok'; fb.textContent='✅ Correto!';
+          points += 5; notify('+5 pontos! ⭐','success');
+        } else {
+          this.style.borderColor='#dc2626'; this.style.background='#fee2e2';
+          fb.className='re-gap-feedback re-gap-fail'; fb.textContent='❌ Tente: ' + s.options[correct];
+          var self = this;
+          setTimeout(function(){
+            self.value=''; self.style.borderColor=''; self.style.background='';
+            fb.style.display='none';
+          }, 2000);
+        }
+      });
+      glist.appendChild(wrap);
+    });
+  }
+
+  /* ORAL DRILL */
+  else if(item.type === 'oral_drill'){
+    var modelEnClean = item.model.en.replace(/'/g,"\\'");
+    block.innerHTML = '<div class="re-block-title">' + item.title + '</div>'
+      + '<p class="re-drill-instruction">' + item.instruction + '</p>'
+      + '<div class="re-drill-model">'
+      + '<div class="re-drill-model-label">🎯 Frase modelo</div>'
+      + '<div class="re-drill-en">' + item.model.en + '</div>'
+      + '<div class="re-drill-pt">' + item.model.pt + '</div>'
+      + '<button class="re-drill-play" onclick="reSpeak(\'' + modelEnClean + '\',\'us\')">🔊 Ouvir modelo</button>'
+      + '</div><div class="re-drill-prompts"></div>';
+    var plist = block.querySelector('.re-drill-prompts');
+    item.prompts.forEach(function(p){
+      var ansClean = p.answer.replace(/'/g,"\\'").replace(/\[.*?\]/g,'');
+      var pdiv = document.createElement('div');
+      pdiv.className = 're-drill-prompt';
+      pdiv.innerHTML = '<div class="re-drill-cue">💬 ' + p.cue + '</div>'
+        + '<div class="re-drill-steps">'
+        + '<button class="re-drill-try" onclick="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\'">🎤 Tentei — mostrar resposta</button>'
+        + '<div class="re-drill-answer" style="display:none">'
+        + '<div class="re-drill-answer-label">✅ Resposta esperada:</div>'
+        + '<div class="re-drill-answer-text">' + p.answer + '</div>'
+        + '<button class="re-drill-play-ans" onclick="reSpeak(\'' + ansClean + '\',\'us\')">🔊 Ouvir</button>'
+        + '</div></div>';
+      plist.appendChild(pdiv);
+    });
+  }
+
+  /* EXERCISE */
+  else if(item.type === 'exercise'){
+    block.innerHTML = '<div class="re-block-title">📝 Exercício</div>'
+      + '<div class="re-exercise-q">' + item.question + '</div>'
+      + '<div class="re-options"></div>';
+    var opts = block.querySelector('.re-options');
+    item.options.forEach(function(opt, idx){
+      var btn = document.createElement('button');
+      btn.className = 're-option';
+      btn.textContent = opt;
+      btn.onclick = function(){ checkAnswer(idx, item, btn, opts, block); };
+      opts.appendChild(btn);
+    });
+  }
+
+  else { return null; }
+  return block;
+}
+
+function checkAnswer(idx, item, btn, opts, block){
+  var key = item.question;
+  if(completedEx.has(key)){ notify('Já respondido!','warning'); return; }
+  var allBtns = opts.querySelectorAll('.re-option');
+  allBtns.forEach(function(b){ b.disabled = true; });
+  var isCorrect = idx === item.correct;
+  if(isCorrect){
+    btn.classList.add('correct');
+    points += 10; notify('+10 pontos! ⭐','success');
+    completedEx.add(key);
+    var fb = document.createElement('div');
+    fb.className = 're-feedback ok';
+    fb.innerHTML = '✅ Correto! ' + item.explanation;
+    block.appendChild(fb);
+    setTimeout(function(){ block.remove(); checkAllDone(); }, 1500);
+  } else {
+    btn.classList.add('wrong');
+    allBtns[item.correct].classList.add('correct');
+    var fb2 = document.createElement('div');
+    fb2.className = 're-feedback fail';
+    fb2.innerHTML = '📖 ' + item.explanation;
+    block.querySelector('.re-options').after(fb2);
+    setTimeout(function(){
+      fb2.remove();
+      allBtns.forEach(function(b){ b.disabled=false; b.classList.remove('wrong','correct'); });
+    }, 2200);
+  }
+}
+
+function checkAllDone(){
+  var remaining = document.querySelectorAll('#re-lesson-root .re-exercise-q');
+  if(remaining.length === 0){
+    isDone = true;
+    notify('🎉 Lição concluída! Parabéns!','success');
+    setTimeout(function(){ render(); }, 900);
+  }
+}
+
+/* ── Expose speak globally with re- prefix to avoid conflicts ── */
+window.reSpeak = speak;
+
+render();
+
+})();
+</script>
